@@ -47,7 +47,7 @@
             background-color: #06F8F4;
         }
         .header {
-            background-color: #333;
+            background-color: red;
             color: #fff;
             text-align: center;
             padding: 10px;

@@ -9,14 +9,16 @@
     <style>
         body {
             font-family: Anton, sans-serif;
+            background-color: black;
         }
         .container {
-            width: 300px;
+        margin-top:170px;
+            width: 600px;
             margin: 170px auto;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: #B6B6B4;
         }
         h2 {
             text-align: center;
@@ -35,19 +37,20 @@
             border-radius: 3px;
         }
         input[type="submit"] {
-            width: 100%;
+            width: 50%;
             padding: 10px;
-            background-color: #01D5BB;
+            background-color: red;
             color: white;
             border: none;
+          margin-left:140px;
             border-radius: 3px;
             cursor: pointer;
         }
         input[type="submit"]:hover {
-            background-color: #06F8F4;
+            background-color: #EA3C53;
         }
         .header {
-            background-color: #333;
+            background-color: red;
             color: #fff;
             text-align: center;
             padding: 10px;
@@ -57,6 +60,11 @@
             text-decoration: none;
             margin: 10px;
         }
+        .radiochoice{
+        padding : 20px;
+        margin-left:205px;
+        }
+        
     </style>
 </head>
 <body>
@@ -74,8 +82,9 @@
             <input type="email" id="email" name="email" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-           Driver<input type="radio" name="role" value="driver">
-           User <input type="radio" name="role" value="user">
+          <div class = "radiochoice">Driver <input type="radio" name="role" value="driver" id="driver">
+User <input type="radio" name="role" value="user" id="user">
+</div>
             <input type="submit" value="Register">
         </form>
     </div>
