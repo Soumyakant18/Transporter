@@ -1,52 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import ="java.io.PrintWriter" %>
+<%@ page import="java.sql.Connection, java.sql.DriverManager, java.sql.PreparedStatement, java.sql.ResultSet, java.sql.SQLException"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Driver Information Form</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Driver Information Form</h2>
-        <form  action ="driver-form.jsp">
-            <!-- Driver Information -->
-            <div class="form-group">
-                <label for="driverName">Driver Name:</label>
-                <input type="text" class="form-control" id="driverName" name="driverName" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="driverLicense">Driver License:</label>
-                <input type="text" class="form-control" id="driverLicense" name="driverLicense" required>
-            </div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Management Section -->
+          
 
-            <!-- Vehicle Information -->
-            <div class="form-group">
-                <label for="vehicleType">Vehicle Type:</label>
-                <input type="text" class="form-control" id="vehicleType" name="vehicleType" required>
-            </div>
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <div class="container mt-5">
+                    <h2>Driver Information Form</h2>
+                    <form action="driver-form.jsp" method="post">
+                        <!-- Driver Information -->
+                        <div class="form-group">
+                            <label for="driverName">Driver Name:</label>
+                            <input type="text" class="form-control" id="driverName" name="driverName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="driverLicense">Driver License:</label>
+                            <input type="text" class="form-control" id="driverLicense" name="driverLicense" required>
+                        </div>
 
-            <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="number" class="form-control" id="price" name="price" required>
-            </div>
+                        <!-- Vehicle Information -->
+                        <div class="form-group">
+                            <label for="vehicleType">Vehicle Type:</label>
+                            <input type="text" class="form-control" id="vehicleType" name="vehicleType" required>
+                        </div>
 
-            <!-- Destination Information -->
-            <div class="form-group">
-                <label for="destination">Destination:</label>
-                <input type="text" class="form-control" id="destination" name="destination" required>
+                        <div class="form-group">
+                            <label for="price">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price" required>
+                        </div>
+
+                        <!-- Destination Information -->
+                        <div class="form-group">
+                            <label for="destination">Destination:</label>
+                            <input type="text" class="form-control" id="destination" name="destination" required>
+                        </div>
+                        <input type="submit">
+                
+                    </form>
+                </div>
             </div>
-            <input type="submit">
-    
-        </form>
+        </div>
     </div>
+
     <%
     PreparedStatement preparedStatement=null;
     Connection connection=null;

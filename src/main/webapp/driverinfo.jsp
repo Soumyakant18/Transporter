@@ -9,6 +9,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Driver Information</title>
+    <style>
+        /* Style to remove border lines */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: none;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,6 +47,16 @@
         // Establish the database connection
         Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 
+        // Handling deletion if a request parameter is present
+        String deleteID = request.getParameter("deleteID");
+        if (deleteID != null) {
+            String deleteSQL = "DELETE FROM driver WHERE id=?";
+            PreparedStatement deleteStatement = connection.prepareStatement(deleteSQL);
+            deleteStatement.setString(1, deleteID);
+            deleteStatement.executeUpdate();
+            deleteStatement.close();
+        }
+
         // Query to retrieve driver information from the database
         String selectSQL = "SELECT * FROM driver";
         PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
@@ -33,7 +65,7 @@
 
 <h2>Driver Information</h2>
 
-<table border="1">
+<table>
     <thead>
         <tr>
             <th>Driver Name</th>
@@ -41,6 +73,7 @@
             <th>Vehicle Type</th>
             <th>Price</th>
             <th>Destination</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -53,6 +86,12 @@
                     <td><%= resultSet.getString("vehicle_type") %></td>
                     <td><%= resultSet.getDouble("price") %></td>
                     <td><%= resultSet.getString("destination") %></td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="hidden" name="deleteID" value="<%= resultSet.getString("id") %>">
+                            <button class="btn" type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
         <%
             }
